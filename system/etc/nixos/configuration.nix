@@ -64,6 +64,7 @@
    
     displayManager = {
         defaultSession = "none+i3";
+        startx.enable = true;
     };
 
     windowManager.i3 = {
