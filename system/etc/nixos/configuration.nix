@@ -58,7 +58,8 @@
   environment.pathsToLink = [ "/libexec" ];
   services.xserver = {
     enable = true;
-
+    modules = [ pkgs.xorg.xf86videofbdev ];
+    videoDrivers = [ "hyperv_fb" ];
     desktopManager = {
       xterm.enable = false;
     };
