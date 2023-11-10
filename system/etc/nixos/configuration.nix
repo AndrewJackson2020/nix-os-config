@@ -55,13 +55,28 @@
     # layout = "us";
     # xkbVariant = "";
   # };
-  services.xserver.enable = true;
-  services.xserver.autorun = false;
-  services.xserver.layout = "us";
-  services.xserver.displayManager.defaultSession = "none+i3";
-  services.xserver.desktopManager.xterm.enable = false;
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.windowManager.i3.enable = true;
+  environment.pathsToLink = [ "/libexec" ];
+  services.xserver = {
+    enable = true;
+
+    desktopManager = {
+      xterm.enable = false;
+    };
+   
+    displayManager = {
+        defaultSession = "none+i3";
+    };
+
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu #application launcher most people use
+        i3status # gives you the default i3 status bar
+        i3lock #default i3 screen locker
+        i3blocks #if you are planning on using i3blocks over i3status
+     ];
+    };
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
