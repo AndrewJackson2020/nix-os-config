@@ -2,12 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib,  ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <home-manager/nixos>
     ];
 
   # Bootloader.
@@ -42,31 +43,36 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
+
   services.xserver = {
     enable = true;
-
-    desktopManager = {
-      xterm.enable = false;
-    };
-
-    displayManager = {
-      defaultSession = "none+i3";
-    };
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu
-        i3status
-        i3lock
-        i3blocks
-      ];
-    };
+#     autorun = false;
+ 
+     desktopManager = {
+       xterm.enable = false;
+     };
+ 
+     displayManager = {
+        defaultSession = "none+i3";
+	# startx.enable = true;
+     };
+     windowManager.i3 = {
+       enable = true;
+       package = pkgs.i3-gaps;
+       extraPackages = with pkgs; [
+         dmenu
+         i3status
+         i3lock
+         i3blocks
+       ];
+     };
   };
+
   # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
+#   services.xserver = {
+#     layout = "us";
+#     xkbVariant = "";
+#   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.andrew = {
@@ -75,14 +81,58 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
+  services.picom.enable = true;
+
+#   home-manager.users.andrew = { pkgs, ... }: {
+#     programs.alacritty.enable = true;
+#     services.picom.enable = true;
+
+#     xsession.windowManager.i3 = {
+#       enable = true;
+#       package = pkgs.i3-gaps;
+#       config = rec {
+# 
+#         keybindings = lib.mkOptionDefault{
+#           "Mod1+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
+#         };
+#       };
+#     };
+
+#     home.stateVersion = "23.11";
+#  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  environment.sessionVariables = rec {
+    TERMINAL = "terminator";
+    EDITOR = "vim";
+  };
+
   environment.systemPackages = with pkgs; [
-     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #    vim 
+  #    vimPlugins.nerdtree
+  #    vimPlugins.gruvbox
+  #    vimPlugins.coc-python
+  ((vim_configurable.override {  }).customize{
+        name = "vim";
+        # Install plugins for example for syntax highlighting of nix files
+        vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
+          start = [ nerdtree gruvbox coc-python ];
+          opt = [];
+        };
+        vimrcConfig.customRC = ''
+          " your custom vimrc
+          set nocompatible
+          set backspace=indent,eol,start
+          " Turn on syntax highlighting by default
+          syntax on
+          " ...
+        '';
+      }
+    )
      wget
      gh
      git
@@ -99,7 +149,7 @@
      cowsay
      bc
      tree
-
+     terminator
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -109,6 +159,10 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  programs = {
+    thunar.enable = true;
+  };
+
 
   # List services that you want to enable:
 
