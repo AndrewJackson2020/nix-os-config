@@ -89,6 +89,17 @@
      ranger
      emacs
      terraform
+     firefox
+     neovim
+     vscode
+     bitwarden
+     libreoffice
+     qbittorrent
+     fortune
+     cowsay
+     bc
+     tree
+
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
