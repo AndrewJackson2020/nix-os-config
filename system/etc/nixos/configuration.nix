@@ -68,6 +68,10 @@
      };
   };
 
+services.xrdp.enable = true;
+services.xrdp.defaultWindowManager = "i3";
+services.xrdp.openFirewall = true;
+
   # Configure keymap in X11
 #   services.xserver = {
 #     layout = "us";
