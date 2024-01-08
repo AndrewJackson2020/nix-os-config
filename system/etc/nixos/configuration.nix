@@ -154,6 +154,8 @@ services.xrdp.openFirewall = true;
      bc
      tree
      terminator
+     jq
+     docker
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
