@@ -107,6 +107,9 @@ services.xrdp.openFirewall = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+ 
+  virtualisation.docker.enable = true;
+  virtualisation.podman.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -155,7 +158,6 @@ services.xrdp.openFirewall = true;
      tree
      terminator
      jq
-     docker
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
