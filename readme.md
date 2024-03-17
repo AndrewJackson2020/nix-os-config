@@ -1,1 +1,0 @@
-# NixOS Desktop Config
