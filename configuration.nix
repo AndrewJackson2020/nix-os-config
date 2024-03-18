@@ -12,6 +12,7 @@
     ];
 
   # Bootloader.
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -156,7 +157,7 @@ services.xrdp.openFirewall = true;
      bc
      tree
      terminator
-     jq
+     # jq
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
