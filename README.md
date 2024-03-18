@@ -1,4 +1,4 @@
 # NixOS Desktop Config
 ```bash
-udo nixos-rebuild switch -I nixos-config=./configuration.nix
+sudo nixos-rebuild switch --flake ./#my-nixos
 ```
