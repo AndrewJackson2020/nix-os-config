@@ -20,7 +20,7 @@ export PATH
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias ls='eza'
+# alias ls='eza'
 alias vim='nvim'
 alias vi='nvim'
 
