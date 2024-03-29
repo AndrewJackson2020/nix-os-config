@@ -151,15 +151,21 @@ services.xrdp.openFirewall = true;
      vscode
      bitwarden
      libreoffice
+     stow
      qbittorrent
      fortune
      cowsay
      gcc
      bc
+     go
      tree
      terminator
+     R
      gnumake
+     eza
      jq
+     delta
+     terraform
      protobufc
      protobuf_23
   ];
