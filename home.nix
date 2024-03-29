@@ -5,6 +5,7 @@ let
   terraform_src = pkgs.fetchzip {
     url = "https://releases.hashicorp.com/terraform/1.7.4/terraform_1.7.4_linux_amd64.zip";
     hash = "sha256-eoPAIM4FtC0fAwW851ouiZpL8hkQ/whKanI26xOX+9M=";
+    postFetch = "chmod +x terraform";
   };
   go_src = pkgs.fetchzip {
     url = "https://go.dev/dl/go1.22.0.linux-amd64.tar.gz";
@@ -13,6 +14,7 @@ let
   eza_src = pkgs.fetchzip {
     url = "https://github.com/eza-community/eza/releases/download/v0.18.7/eza_x86_64-unknown-linux-gnu.tar.gz";
     hash = "sha256-UQtnNmIayEMbSKqJWyo1wYenwIkyi894tha/EBWpohg=";
+    postFetch = "chmod +x eza";
   };
   get_files = x: map (y: x + "/" + y) (builtins.attrNames (lib.filterAttrs (n: v: v == "regular") (builtins.readDir (./home + x))));
   get_directories = x: builtins.concatLists (map (y: get_dotfiles (x + "/" + y)) (builtins.attrNames (lib.filterAttrs (n: v: v == "directory") (builtins.readDir (./home + x)))));

@@ -154,10 +154,14 @@ services.xrdp.openFirewall = true;
      qbittorrent
      fortune
      cowsay
+     gcc
      bc
      tree
      terminator
-     # jq
+     gnumake
+     jq
+     protobufc
+     protobuf_23
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
