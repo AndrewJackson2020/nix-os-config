@@ -142,6 +142,8 @@ services.xrdp.openFirewall = true;
     )
      wget
      gh
+     htop
+     zsh
      git
      ranger
      emacs
@@ -157,6 +159,7 @@ services.xrdp.openFirewall = true;
      cowsay
      gcc
      bc
+     zenith
      go
      tree
      terminator
