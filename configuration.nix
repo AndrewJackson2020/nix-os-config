@@ -153,6 +153,7 @@ services.xrdp.openFirewall = true;
      vscode
      bitwarden
      libreoffice
+     tmux
      stow
      qbittorrent
      fortune
