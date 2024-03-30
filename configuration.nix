@@ -67,16 +67,14 @@
        ];
      };
   };
+  services.openssh.enable = true;
 
-services.xrdp.enable = true;
-services.xrdp.defaultWindowManager = "i3";
-services.xrdp.openFirewall = true;
-
-  # Configure keymap in X11
-#   services.xserver = {
-#     layout = "us";
-#     xkbVariant = "";
-#   };
+  services.xrdp = {
+    enable = true;
+    defaultWindowManager = "i3";
+    openFirewall = true;
+  };
+  services.picom.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.andrew = {
@@ -85,47 +83,29 @@ services.xrdp.openFirewall = true;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
-  services.picom.enable = true;
-
-#   home-manager.users.andrew = { pkgs, ... }: {
-#     programs.alacritty.enable = true;
-#     services.picom.enable = true;
-
-#     xsession.windowManager.i3 = {
-#       enable = true;
-#       package = pkgs.i3-gaps;
-#       config = rec {
-# 
-#         keybindings = lib.mkOptionDefault{
-#           "Mod1+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
-#         };
-#       };
-#     };
-
-#     home.stateVersion = "23.11";
-#  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
  
-  virtualisation.docker.enable = true;
-  virtualisation.podman.enable = true;
+  virtualisation = {
+    docker.enable = true;
+    podman.enable = true;
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.sessionVariables = rec {
-    TERMINAL = "terminator";
+    TERMINAL = "alacritty";
     EDITOR = "nvim";
   };
 
+  
+  fonts.packages = with pkgs; [
+    nerdfonts
+  ];
   environment.systemPackages = with pkgs; [
-  #    vim 
-  #    vimPlugins.nerdtree
-  #    vimPlugins.gruvbox
-  #    vimPlugins.coc-python
   ((vim_configurable.override {  }).customize{
         name = "vim";
-        # Install plugins for example for syntax highlighting of nix files
         vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
           start = [ nerdtree gruvbox coc-python ];
           opt = [];
@@ -140,6 +120,7 @@ services.xrdp.openFirewall = true;
         '';
       }
     )
+     alacritty
      R
      bc
      bitwarden
@@ -157,16 +138,16 @@ services.xrdp.openFirewall = true;
      htop
      jq
      libreoffice
-     nerdfonts
      protobuf_23
      protobufc
      qbittorrent
      ranger
      ripgrep
      stow
-     terminator
      terraform
      terraform
+     cargo 
+     rustc 
      tmux
      tree
      vscode
@@ -191,7 +172,6 @@ services.xrdp.openFirewall = true;
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-    services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
