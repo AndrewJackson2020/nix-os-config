@@ -45,6 +45,7 @@ in
       pkgs.vimPlugins.packer-nvim
       pkgs.vimPlugins.tokyonight-nvim
       pkgs.vimPlugins.nvim-tree-lua
+      pkgs.vimPlugins.nvim-web-devicons
       pkgs.vimPlugins.mason-nvim
       pkgs.vimPlugins.mason-lspconfig-nvim
     ];

@@ -140,38 +140,40 @@ services.xrdp.openFirewall = true;
         '';
       }
     )
-     wget
-     gh
-     htop
-     nerdfonts
-     zsh
-     git
-     ranger
-     emacs
-     terraform
-     firefox
-     vscode
-     bitwarden
-     libreoffice
-     tmux
-     stow
-     qbittorrent
-     fortune
-     cowsay
-     gcc
-     bc
-     zenith
-     go
-     tree
-     terminator
      R
-     gnumake
-     eza
-     jq
+     bc
+     bitwarden
+     cowsay
      delta
-     terraform
-     protobufc
+     emacs
+     eza
+     firefox
+     fortune
+     gcc
+     gh
+     git
+     gnumake
+     go
+     htop
+     jq
+     libreoffice
+     nerdfonts
      protobuf_23
+     protobufc
+     qbittorrent
+     ranger
+     ripgrep
+     stow
+     terminator
+     terraform
+     terraform
+     tmux
+     tree
+     vscode
+     wget
+     feh
+     zenith
+     zsh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
