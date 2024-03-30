@@ -24,17 +24,30 @@ let
   files_map = map (x: {"${x}".source = (home_file x);}) files;
 in
 {
-  home.username = "andrew";
-  home.homeDirectory = "/home/andrew";
+  home = {
+    username = "andrew";
+    homeDirectory = "/home/andrew";
 
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+    stateVersion = "23.05"; # Please read the comment before changing.
 
-  home.file = lib.mkMerge ([
+    file = lib.mkMerge ([
     # {".local/bin/terraform".source = terraform_src;} 
     # {".local/go".source = go_src;}
     # {".local/bin/eza".source = eza_src;}
-  ] ++ files_map);
+    ] ++ files_map);
+  };
 
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
+    neovim.enable = true;
+    neovim.plugins = [
+      pkgs.vimPlugins.telescope-nvim
+      pkgs.vimPlugins.packer-nvim
+      pkgs.vimPlugins.tokyonight-nvim
+      pkgs.vimPlugins.nvim-tree-lua
+      pkgs.vimPlugins.mason-nvim
+      pkgs.vimPlugins.mason-lspconfig-nvim
+    ];
+  };
 }
 

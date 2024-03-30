@@ -115,7 +115,7 @@ services.xrdp.openFirewall = true;
   # $ nix search wget
   environment.sessionVariables = rec {
     TERMINAL = "terminator";
-    EDITOR = "vim";
+    EDITOR = "nvim";
   };
 
   environment.systemPackages = with pkgs; [
@@ -143,13 +143,13 @@ services.xrdp.openFirewall = true;
      wget
      gh
      htop
+     nerdfonts
      zsh
      git
      ranger
      emacs
      terraform
      firefox
-     neovim
      vscode
      bitwarden
      libreoffice
