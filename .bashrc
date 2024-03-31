@@ -20,4 +20,4 @@ alias mv='mv -i'
 alias vim='nvim'
 alias vi='nvim'
 
-exec zsh
+zsh

@@ -37,7 +37,6 @@ in
       {".old_bashrc".source = ./.bashrc;}
     ] ++ files_map);
   };
-
   programs = {
     home-manager.enable = true;
     bash = {

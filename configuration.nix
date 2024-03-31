@@ -90,6 +90,7 @@
      delta
      emacs
      eza
+     fzf
      firefox
      fortune
      gcc
@@ -114,8 +115,8 @@
      vscode
      wget
      feh
-     zsh
      zenith
+     zsh
     ];
   };
 
