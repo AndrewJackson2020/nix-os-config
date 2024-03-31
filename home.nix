@@ -25,6 +25,41 @@ let
 in
 {
   home = {
+    packages = with pkgs; [
+     alacritty
+     R
+     bc
+     bitwarden
+     cowsay
+     delta
+     emacs
+     fzf
+     firefox
+     fortune
+     gcc
+     gh
+     git
+     gnumake
+     htop
+     jq
+     libreoffice
+     protobuf_23
+     protobufc
+     qbittorrent
+     unzip
+     ranger
+     ripgrep
+     stow
+     cargo 
+     rustc 
+     tmux
+     tree
+     vscode
+     wget
+     feh
+     zenith
+     zsh
+    ];
     username = "andrew";
     homeDirectory = "/home/andrew";
 
