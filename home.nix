@@ -34,21 +34,30 @@ in
     # {".local/bin/terraform".source = terraform_src;} 
     # {".local/go".source = go_src;}
     # {".local/bin/eza".source = eza_src;}
+      {".old_bashrc".source = ./.bashrc;}
     ] ++ files_map);
   };
 
   programs = {
     home-manager.enable = true;
-    neovim.enable = true;
-    neovim.plugins = [
-      pkgs.vimPlugins.telescope-nvim
-      pkgs.vimPlugins.packer-nvim
-      pkgs.vimPlugins.tokyonight-nvim
-      pkgs.vimPlugins.nvim-tree-lua
-      pkgs.vimPlugins.nvim-web-devicons
-      pkgs.vimPlugins.mason-nvim
-      pkgs.vimPlugins.mason-lspconfig-nvim
-    ];
+    bash = {
+      enable = true;
+        bashrcExtra = ''
+          source ~/.old_bashrc
+        '';
+    };
+    neovim = {
+      enable = true;
+      plugins = [
+        pkgs.vimPlugins.telescope-nvim
+        pkgs.vimPlugins.packer-nvim
+        pkgs.vimPlugins.tokyonight-nvim
+        pkgs.vimPlugins.nvim-tree-lua
+        pkgs.vimPlugins.nvim-web-devicons
+        pkgs.vimPlugins.mason-nvim
+        pkgs.vimPlugins.mason-lspconfig-nvim
+      ];
+    };
   };
 }
 

@@ -81,7 +81,42 @@
     isNormalUser = true;
     description = "Andrew";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    packages = with pkgs; [
+     alacritty
+     R
+     bc
+     bitwarden
+     cowsay
+     delta
+     emacs
+     eza
+     firefox
+     fortune
+     gcc
+     gh
+     git
+     gnumake
+     go
+     htop
+     jq
+     libreoffice
+     protobuf_23
+     protobufc
+     qbittorrent
+     ranger
+     ripgrep
+     stow
+     terraform
+     cargo 
+     rustc 
+     tmux
+     tree
+     vscode
+     wget
+     feh
+     zsh
+     zenith
+    ];
   };
 
   # Allow unfree packages
@@ -120,41 +155,6 @@
         '';
       }
     )
-     alacritty
-     R
-     bc
-     bitwarden
-     cowsay
-     delta
-     emacs
-     eza
-     firefox
-     fortune
-     gcc
-     gh
-     git
-     gnumake
-     go
-     htop
-     jq
-     libreoffice
-     protobuf_23
-     protobufc
-     qbittorrent
-     ranger
-     ripgrep
-     stow
-     terraform
-     terraform
-     cargo 
-     rustc 
-     tmux
-     tree
-     vscode
-     wget
-     feh
-     zenith
-     zsh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
