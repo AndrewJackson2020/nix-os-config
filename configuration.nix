@@ -89,7 +89,6 @@
      cowsay
      delta
      emacs
-     eza
      fzf
      firefox
      fortune
@@ -97,17 +96,16 @@
      gh
      git
      gnumake
-     go
      htop
      jq
      libreoffice
      protobuf_23
      protobufc
      qbittorrent
+     unzip
      ranger
      ripgrep
      stow
-     terraform
      cargo 
      rustc 
      tmux
