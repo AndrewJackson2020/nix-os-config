@@ -18,6 +18,11 @@ let
     url = "https://github.com/junegunn/fzf/releases/download/0.48.1/fzf-0.48.1-linux_amd64.tar.gz";
     hash = "sha256-VOaQd6uSNOFHzzYfZiE1Xw5V+8jZ3HkGm3la3cK2Ec8=";
   };
+  oh_my_zsh_src = pkgs.fetchgit {
+    url = "https://github.com/ohmyzsh/ohmyzsh.git";
+    rev = "6dfa9507ce0eb0f4d386bd03268e33943ea55c0f";
+    sha256 = "sha256-u4g3dCkAH/F44NxmA8tF8ga7grb57Pny740viS7BUiE=";
+  };
   get_files = x: map (y: x + "/" + y) (builtins.attrNames (lib.filterAttrs (n: v: v == "regular") (builtins.readDir (./home + x))));
   get_directories = x: builtins.concatLists (map (y: get_dotfiles (x + "/" + y)) (builtins.attrNames (lib.filterAttrs (n: v: v == "directory") (builtins.readDir (./home + x)))));
   get_dotfiles = x: map (y: y) (builtins.concatLists [(get_directories x) (get_files x)]);
@@ -71,6 +76,7 @@ in
       {".local/go".source = go_src;}
       {".local/bin/eza".source = eza_src + "/eza";}
       {".local/bin/fzf".source = fzf_src + "/fzf";}
+      {".oh-my-zsh".source = oh_my_zsh_src;}
       {".old_bashrc".source = ./.bashrc;}
     ] ++ files_map);
   };
