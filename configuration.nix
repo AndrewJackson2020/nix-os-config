@@ -7,7 +7,6 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware_configuration/laptop.nix
       # <home-manager/nixos>
     ];
 

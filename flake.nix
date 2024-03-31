@@ -13,20 +13,30 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    # Please replace my-nixos with your hostname
-    nixosConfigurations.my-nixos = nixpkgs.lib.nixosSystem {
+
+    # TODO Find way to reuse more of code below between 
+    # laptop and desktop
+    nixosConfigurations.nixos-desktop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        # Import the previous configuration.nix we used,
-        # so the old configuration file still takes effect
+      	./hardware_configuration/desktop.nix
         ./configuration.nix
-        home-manager.nixosModules.home-manager{
+        home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-
           home-manager.users.andrew = import ./home.nix;
-
-          # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+        }
+      ];
+    };
+    nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+      	./hardware_configuration/laptop.nix
+        ./configuration.nix
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.andrew = import ./home.nix;
         }
       ];
     };
