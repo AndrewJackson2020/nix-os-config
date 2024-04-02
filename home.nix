@@ -33,13 +33,15 @@ in
 {
   home = {
     packages = with pkgs; [
-     alacritty
      R
+     alacritty
      bc
      bitwarden
+     cargo 
      cowsay
      delta
      emacs
+     feh
      firefox
      fortune
      gcc
@@ -51,18 +53,17 @@ in
      libreoffice
      protobuf_23
      protobufc
+     python3
      qbittorrent
-     unzip
      ranger
      ripgrep
-     stow
-     cargo 
      rustc 
+     stow
      tmux
      tree
+     unzip
      vscode
      wget
-     feh
      zenith
      zsh
     ];
