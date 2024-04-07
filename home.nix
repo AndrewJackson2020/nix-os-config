@@ -59,6 +59,7 @@ in
      ripgrep
      rustc 
      stow
+     tldr
      tmux
      tree
      unzip
