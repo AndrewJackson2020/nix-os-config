@@ -34,6 +34,7 @@ in
   home = {
     packages = with pkgs; [
      R
+     ansible
      alacritty
      bc
      bitwarden
@@ -55,7 +56,6 @@ in
      protobufc
      python3
      qbittorrent
-     ranger
      ripgrep
      rustc 
      stow
