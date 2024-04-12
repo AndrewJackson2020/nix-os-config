@@ -52,6 +52,7 @@ in
      htop
      jq
      libreoffice
+     postgresql_16
      protobuf_23
      protobufc
      python3
