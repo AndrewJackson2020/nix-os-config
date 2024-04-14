@@ -41,6 +41,7 @@ in
      cargo 
      cowsay
      delta
+     podman-compose
      emacs
      feh
      firefox
@@ -52,8 +53,10 @@ in
      htop
      jq
      libreoffice
+     odyssey
      postgresql_16
      protobuf_23
+     pgbouncer
      protobufc
      python3
      qbittorrent
@@ -62,6 +65,7 @@ in
      stow
      tldr
      tmux
+     openldap
      tree
      unzip
      vscode
