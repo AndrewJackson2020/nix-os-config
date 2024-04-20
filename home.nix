@@ -34,14 +34,14 @@ in
   home = {
     packages = with pkgs; [
      R
-     ansible
      alacritty
+     ansible
+     bazel_7
      bc
      bitwarden
      cargo 
      cowsay
      delta
-     podman-compose
      emacs
      feh
      firefox
@@ -54,9 +54,11 @@ in
      jq
      libreoffice
      odyssey
+     openldap
+     pgbouncer
+     podman-compose
      postgresql_16
      protobuf_23
-     pgbouncer
      protobufc
      python3
      qbittorrent
@@ -65,7 +67,6 @@ in
      stow
      tldr
      tmux
-     openldap
      tree
      unzip
      vscode
