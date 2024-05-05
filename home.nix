@@ -43,6 +43,7 @@ in
      cargo 
      cowsay
      delta
+     du-dust
      emacs
      feh
      firefox
@@ -74,6 +75,7 @@ in
      vscode
      wget
      zenith
+     zoxide
      zsh
     ];
     username = "andrew";

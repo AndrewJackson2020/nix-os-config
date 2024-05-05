@@ -13,6 +13,7 @@ export PATH=$PATH:~/.config/emacs/bin/
 export PATH=$PATH:~/.local/go/bin/
 
 FZF_CTRL_T_COMMAND= FZF_ALT_C_COMMAND= eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd bash)"
 
 alias rm='rm -i'
 alias ls='eza'
@@ -20,4 +21,4 @@ alias cat='bat'
 alias vim='nvim'
 alias vi='nvim'
 alias ps='procs'
-
+alias du='dust'
