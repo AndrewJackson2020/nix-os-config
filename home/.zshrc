@@ -16,6 +16,7 @@ FZF_CTRL_T_COMMAND= FZF_ALT_C_COMMAND= eval "$(fzf --zsh)"
 
 alias rm='rm -i'
 alias ls='eza'
+alias cat='bat'
 alias vim='nvim'
 alias vi='nvim'
 

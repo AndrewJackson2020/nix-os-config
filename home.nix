@@ -37,6 +37,7 @@ in
      alacritty
      ansible
      bazel_7
+     bat
      bc
      bitwarden
      cargo 
