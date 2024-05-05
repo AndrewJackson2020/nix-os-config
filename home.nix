@@ -59,6 +59,7 @@ in
      pgbouncer
      podman-compose
      postgresql_16
+     procs
      protobuf_23
      protobufc
      python3

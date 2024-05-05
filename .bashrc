@@ -13,6 +13,7 @@ alias ls='eza'
 alias cat='bat'
 alias vim='nvim'
 alias vi='nvim'
+alias ps='procs'
 
 if [ "${TERM}" == 'alacritty' ]; then
     zsh
