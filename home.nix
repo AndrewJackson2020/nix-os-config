@@ -74,6 +74,7 @@ in
      unzip
      vscode
      wget
+     starship
      zenith
      zoxide
      zsh
