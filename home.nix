@@ -2,6 +2,22 @@
 { lib, config, pkgs, ... }:
 
 let
+  debian_iso = pkgs.fetchurl {
+    url = "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.5.0-amd64-netinst.iso";
+    hash = "sha256-AT9bRGcNgSgLWxvAJFWEKyUN8vDGdjOY/raa8agFoU8=";
+  };
+  arch_iso = pkgs.fetchurl {
+    url = "https://mirror.arizona.edu/archlinux/iso/2024.06.01/";
+    hash = "sha256-tkrce0Pzoc+gJ111eAuAjLzcHZBUB4tGUjmuYNVuSec=";
+  };
+  temple_os_iso = pkgs.fetchurl {
+    url = "https://www.templeos.org/Downloads/TOS_Distro.ISO";
+    hash = "sha256-PGjKOV0LZPd58f+jMOJoV5ixeGLjw2rk40lTf9Z2tAs=";
+  };
+  rocky9_iso = pkgs.fetchurl {
+    url = "https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.4-x86_64-minimal.iso";
+    hash = "sha256-7jrJf9/6tYZSQhlBWZkCASF5w3U1rs52gkZzEFFpxKI=";
+  };
   terraform_src = pkgs.fetchzip {
     url = "https://releases.hashicorp.com/terraform/1.7.4/terraform_1.7.4_linux_amd64.zip";
     hash = "sha256-eoPAIM4FtC0fAwW851ouiZpL8hkQ/whKanI26xOX+9M=";
@@ -42,6 +58,7 @@ in
      bitwarden
      cargo 
      cowsay
+     rustfmt
      delta
      du-dust
      emacs
@@ -57,6 +74,7 @@ in
      libreoffice
      odyssey
      openldap
+     openssl
      pgbouncer
      podman-compose
      postgresql_16
@@ -85,6 +103,10 @@ in
     stateVersion = "23.05"; # Please read the comment before changing.
 
     file = lib.mkMerge ([
+      {"iso/arch.iso".source = arch_iso;} 
+      {"iso/rocky_9.iso".source = rocky9_iso;} 
+      {"iso/temple_os.iso".source = temple_os_iso;} 
+      {"iso/debian.iso".source = debian_iso;} 
       {".local/bin/terraform".source = terraform_src + "/terraform";} 
       {".local/go".source = go_src;}
       {".local/bin/eza".source = eza_src + "/eza";}

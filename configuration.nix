@@ -81,6 +81,7 @@
     description = "Andrew";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+    	qemu
     ];
   };
 
