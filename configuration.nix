@@ -54,6 +54,10 @@
      displayManager = {
         defaultSession = "none+i3";
 	startx.enable = true;
+     	lightdm = {
+	  enable = true;
+	  greeter.enable = true;
+	};
      };
      windowManager.i3 = {
        enable = true;
@@ -83,6 +87,21 @@
     packages = with pkgs; [
     	qemu
     ];
+  };
+  users.users.fei = {
+    isNormalUser = true;
+    description = "Mommy Bear";
+    extraGroups = [ "networkmanager" ];
+  };
+  users.users.bunbun = {
+    isNormalUser = true;
+    description = "Baby Bun";
+    extraGroups = [ "networkmanager" ];
+  };
+  users.users.babybear = {
+    isNormalUser = true;
+    description = "Bun Bear";
+    extraGroups = [ "networkmanager" ];
   };
 
   # Allow unfree packages
