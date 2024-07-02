@@ -2,10 +2,11 @@
 { lib, config, pkgs, ... }:
 
 let
-  debian_iso = pkgs.fetchurl {
-    url = "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.5.0-amd64-netinst.iso";
-    hash = "sha256-AT9bRGcNgSgLWxvAJFWEKyUN8vDGdjOY/raa8agFoU8=";
-  };
+  # TODO: Need to find stable url
+  # debian_iso = pkgs.fetchurl {
+  #   url = "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.5.0-amd64-netinst.iso";
+  #   hash = "sha256-AT9bRGcNgSgLWxvAJFWEKyUN8vDGdjOY/raa8agFoU8=";
+  # };
   arch_iso = pkgs.fetchurl {
     url = "https://mirror.arizona.edu/archlinux/iso/2024.06.01/";
     hash = "sha256-tkrce0Pzoc+gJ111eAuAjLzcHZBUB4tGUjmuYNVuSec=";
@@ -106,7 +107,7 @@ in
       {"iso/arch.iso".source = arch_iso;} 
       {"iso/rocky_9.iso".source = rocky9_iso;} 
       {"iso/temple_os.iso".source = temple_os_iso;} 
-      {"iso/debian.iso".source = debian_iso;} 
+      # {"iso/debian.iso".source = debian_iso;} 
       {".local/bin/terraform".source = terraform_src + "/terraform";} 
       {".local/go".source = go_src;}
       {".local/bin/eza".source = eza_src + "/eza";}
