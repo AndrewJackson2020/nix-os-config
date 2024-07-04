@@ -64,7 +64,7 @@ in
      du-dust
      emacs
      feh
-     firefox
+     brave
      fortune
      gcc
      gh
