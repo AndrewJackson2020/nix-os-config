@@ -1,6 +1,6 @@
 # Nix Config
 
-## Commands
+## Switch Commands
 Build for laptop
 ```bash
 sudo nixos-rebuild switch --flake ./#nixos-laptop
@@ -14,6 +14,11 @@ sudo nixos-rebuild switch --flake ./#nixos-desktop
 Build for VM
 ```bash
 sudo nixos-rebuild switch --flake ./#nixos-hyperv-vm
+```
+
+## Install command
+```bash
+sudo ./install.sh
 ```
 
 ## Future Development
