@@ -12,7 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
-
+  
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.useOSProber = true;
@@ -21,12 +21,17 @@
   boot.loader.timeout = null;
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/140bae9f-0779-40b4-86e3-c06486ee99a5";
-      fsType = "ext4";
+    { device = "rpool/root";
+      fsType = "zfs";
+    };
+
+  fileSystems."/home" =
+    { device = "rpool/home";
+      fsType = "zfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/A4F3-80A0";
+    { device = "/dev/disk/by-uuid/3C48-2BC7";
       fsType = "vfat";
     };
 
@@ -38,8 +43,8 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  networking.hostId = "abcd1234";
 }
