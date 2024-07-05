@@ -109,6 +109,7 @@
   virtualisation = {
     docker.enable = false;
     podman.enable = true;
+    libvirtd.enable = true;
   };
 
   environment.sessionVariables = rec {
@@ -140,6 +141,7 @@
 
   programs = {
     thunar.enable = true;
+    virt-manager.enable = true;
   };
 
   system.stateVersion = "23.11";
