@@ -107,7 +107,7 @@
   nixpkgs.config.allowUnfree = true;
  
   virtualisation = {
-    docker.enable = true;
+    docker.enable = false;
     podman.enable = true;
   };
 
