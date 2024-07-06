@@ -105,11 +105,26 @@
   };
 
   nixpkgs.config.allowUnfree = true;
- 
+
+  security.tpm2 = {
+    enable = true;
+    pkcs11.enable = true;
+    tctiEnvironment.enable = true;
+  };
   virtualisation = {
     docker.enable = false;
     podman.enable = true;
-    libvirtd.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        ovmf = {
+          enable = true;
+          packages = [pkgs.OVMFFull.fd];
+        };
+        swtpm.enable = true;
+      };
+    };
   };
 
   environment.sessionVariables = rec {
