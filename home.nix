@@ -116,6 +116,18 @@ in
       {".old_bashrc".source = ./.bashrc;}
     ] ++ files_map);
   };
+  systemd.user.services = {
+    service-name = {
+      Unit = {
+        Description = "Example description";
+        Documentation = [ "man:example(1)" "man:example(5)" ];
+      };
+
+      Service = {
+         ExecStart = "${pkgs.python3}/bin/python -m http.server";
+      };
+    };
+  };
   programs = {
     home-manager.enable = true;
     bash = {
