@@ -1,0 +1,16 @@
+FROM rockylinux:9
+
+RUN dnf --assumeyes install openssh-server
+RUN dnf --assumeyes install sudo
+
+RUN useradd andrew
+RUN usermod -aG wheel andrew
+
+USER andrew
+RUN ssh-keygen -A
+RUN mkdir ~/.ssh/
+RUN echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEoUJV9wqCSvFOAj+x8I8p3hv3Wtf4qFwO7+iAg/XR0P andrew@nixos' > ~/.ssh/authorized_keys
+
+USER root
+RUN ssh-keygen -A
+CMD /usr/sbin/sshd -D -p 8000
