@@ -117,14 +117,23 @@ in
     ] ++ files_map);
   };
   systemd.user.services = {
-    service-name = {
-      Unit = {
-        Description = "Example description";
-        Documentation = [ "man:example(1)" "man:example(5)" ];
+    rocky-dev-container = {
+      Unit = { 
+        Description = "Container running ssh to do development on";
       };
 
       Service = {
-         ExecStart = "${pkgs.python3}/bin/python -m http.server";
+         Environment=[
+	  "PATH=/bin:/sbin:/nix/var/nix/profiles/default/bin:/run/wrappers/bin"
+	  "PODMAN_SYSTEMD_UNIT=%n"
+	 ];
+	 # ExecStartPre = "${pkgs.podman}/bin/podman stop %n && ${pkgs.podman} rm %n";
+	 ExecStart = "${pkgs.writeShellScript "watch-store" ''
+		${pkgs.podman}/bin/podman run \
+			--network host \
+			--name $1 \
+			rocky9dev:latest;
+	 ''} %n";
       };
     };
   };
