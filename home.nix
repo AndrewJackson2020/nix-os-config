@@ -54,6 +54,7 @@ in
      alacritty
      ansible
      bazel_7
+     black
      bat
      bc
      bitwarden
@@ -63,6 +64,7 @@ in
      delta
      du-dust
      emacs
+     isort
      feh
      brave
      fortune
@@ -127,13 +129,7 @@ in
 	  "PATH=/bin:/sbin:/nix/var/nix/profiles/default/bin:/run/wrappers/bin"
 	  "PODMAN_SYSTEMD_UNIT=%n"
 	 ];
-	 # ExecStartPre = "${pkgs.podman}/bin/podman stop %n && ${pkgs.podman} rm %n";
-	 ExecStart = "${pkgs.writeShellScript "watch-store" ''
-		${pkgs.podman}/bin/podman run \
-			--network host \
-			--name $1 \
-			rocky9dev:latest;
-	 ''} %n";
+	 ExecStart = "${pkgs.podman}/bin/podman start $n";
       };
     };
   };

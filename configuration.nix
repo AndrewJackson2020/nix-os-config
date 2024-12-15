@@ -83,7 +83,7 @@
   users.users.andrew = {
     isNormalUser = true;
     description = "Andrew";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
     	qemu
     ];
@@ -112,8 +112,11 @@
     tctiEnvironment.enable = true;
   };
   virtualisation = {
-    docker.enable = false;
-    podman.enable = true;
+    docker.enable = true;
+    podman = {
+    	enable = true;
+	dockerCompat = false;
+    };
     libvirtd = {
       enable = true;
       qemu = {
