@@ -35,6 +35,10 @@ let
     url = "https://github.com/junegunn/fzf/releases/download/0.48.1/fzf-0.48.1-linux_amd64.tar.gz";
     hash = "sha256-VOaQd6uSNOFHzzYfZiE1Xw5V+8jZ3HkGm3la3cK2Ec8=";
   };
+  typst_src = pkgs.fetchzip {
+    url = "https://github.com/typst/typst/releases/download/v0.12.0/typst-x86_64-unknown-linux-musl.tar.xz";
+    hash = "sha256-ta69kqJM9kyRWJxykXOM5/fP1MTRO0V+ZnFdG0nKCiI=";
+  };
   oh_my_zsh_src = pkgs.fetchgit {
     url = "https://github.com/ohmyzsh/ohmyzsh.git";
     rev = "6dfa9507ce0eb0f4d386bd03268e33943ea55c0f";
@@ -114,6 +118,7 @@ in
       {".local/go".source = go_src;}
       {".local/bin/eza".source = eza_src + "/eza";}
       {".local/bin/fzf".source = fzf_src + "/fzf";}
+      {".local/bin/typst".source = typst_src + "/typst";}
       {".oh-my-zsh".source = oh_my_zsh_src;}
       {".old_bashrc".source = ./.bashrc;}
     ] ++ files_map);
